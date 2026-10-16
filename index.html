@@ -230,6 +230,44 @@ footer{background:#120714;text-align:center;padding:44px 28px 50px;color:var(--f
 footer img{width:42px;opacity:.85;}
 footer p{margin:10px 0 0;}
 
+/* The Road Traveled (top of Common threads) */
+.road-wrap{margin-bottom:84px;padding-bottom:64px;border-bottom:1px solid rgba(239,231,218,.1);}
+.road-meter{display:flex;gap:6px;margin:30px 0 10px;}
+.road-meter i{flex:1;height:12px;border-radius:7px;background:var(--m);transform-origin:left;animation:grow 1.1s cubic-bezier(.4,.1,.2,1) both;animation-delay:var(--d);box-shadow:0 0 18px -4px var(--m);}
+.road-meter i.motion{background:linear-gradient(to right,var(--m) 62%,rgba(239,231,218,.1) 62%);}
+.road-meter i.deep{background:repeating-linear-gradient(-45deg,var(--m) 0 6px,rgba(239,231,218,.06) 6px 12px);box-shadow:none;}
+@keyframes grow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+.road-legend{margin:0;font-size:.9rem;color:var(--faint);}
+.road-legend b{font-family:var(--head);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);}
+.roads{display:grid;gap:18px;margin-top:34px;}
+.road{background:var(--card);border:1px solid rgba(239,231,218,.08);border-left:3px solid var(--h);border-radius:6px;padding:22px 26px 22px;animation:rise .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d,0ms);}
+.road .rh{display:flex;align-items:center;gap:14px;margin-bottom:26px;}
+.road .ico{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,var(--h) 0%,transparent 80%);color:#fff;flex:0 0 auto;}
+.road h4{flex:1;margin:0;font-family:var(--display);font-weight:400;font-size:1.7rem;line-height:1.08;color:#fff;}
+.road h4 em{color:var(--h);}
+.rst{flex:0 0 auto;font-family:var(--head);font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px;border-radius:20px;border:1px solid var(--h);color:var(--h);}
+.rst.shifted{background:var(--h);color:var(--crown);}
+.rst.deep{border-style:dashed;}
+.legs{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:26px;}
+.leg{position:relative;padding-top:24px;}
+.leg .dot{position:absolute;top:0;left:0;width:14px;height:14px;border-radius:50%;background:var(--crown);border:2px solid rgba(239,231,218,.35);}
+.leg.now .dot{background:var(--h);border-color:var(--h);box-shadow:0 0 14px var(--h);}
+.leg.next .dot{border:2px dashed var(--h);}
+.leg::after{content:"";position:absolute;top:6px;left:20px;right:-20px;height:2px;}
+.leg.then::after{background:linear-gradient(to right,rgba(239,231,218,.25),var(--h));}
+.leg.now::after{background:repeating-linear-gradient(to right,var(--h) 0 6px,transparent 6px 12px);opacity:.6;}
+.leg.next::after{display:none;}
+.leg small{display:block;font-family:var(--head);font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;}
+.leg.now small,.leg.next small{color:var(--h);}
+.leg p{margin:0;font-size:.95rem;color:var(--dim);line-height:1.58;}
+.leg.now p{color:var(--ink);}
+.leg.next p{font-family:var(--display);font-style:italic;font-size:1.22rem;line-height:1.32;color:#fff;}
+.road .rnote{margin:20px 0 0;padding:10px 14px;border-radius:4px;background:rgba(239,231,218,.035);font-size:.92rem;color:var(--dim);}
+.said-l{margin:22px 0 8px;font-family:var(--head);font-size:9px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--h);}
+.said{display:flex;flex-wrap:wrap;gap:10px;}
+.said blockquote{flex:1 1 280px;margin:0;padding:10px 14px;border-left:2px solid var(--h);background:rgba(239,231,218,.035);border-radius:0 4px 4px 0;font-family:var(--display);font-style:italic;font-size:1.12rem;line-height:1.38;color:#fff;}
+.said cite{display:block;margin-top:5px;font-family:var(--head);font-style:normal;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);}
+
 @media (max-width:1000px){.cols{grid-template-columns:1fr 1fr;}.cols .col:last-child{grid-column:span 2;}.threads{grid-template-columns:1fr 1fr;}.g-grid{grid-template-columns:1fr;}}
 @media (max-width:760px){
   .sess-head{grid-template-columns:1fr;}
@@ -237,6 +275,12 @@ footer p{margin:10px 0 0;}
   .note ol{grid-template-columns:1fr;}
   .tl-stops{grid-template-columns:repeat(4,1fr);row-gap:22px;}
   .tl-track{display:none;}
+  .road{padding:20px 18px;}.road .rh{flex-wrap:wrap;}
+  .legs{grid-template-columns:1fr;gap:20px;padding-left:26px;}
+  .leg{padding-top:0;}.leg .dot{top:4px;left:-26px;}
+  .leg::after{top:22px;left:-20px;right:auto;bottom:-18px;width:2px;height:auto;}
+  .leg.then::after{background:linear-gradient(rgba(239,231,218,.25),var(--h));}
+  .leg.now::after{background:repeating-linear-gradient(var(--h) 0 6px,transparent 6px 12px);}
   .appt{grid-template-columns:70px 1fr;}.appt .go{display:none;}
   .pop{left:12px !important;right:12px !important;max-width:none;bottom:14px !important;top:auto !important;}
 }
@@ -741,6 +785,58 @@ function season(S){
     <aside class="note"><h3>For <em>future you</em></h3><p>The things worth knowing later, after the details fade.</p><ol>${S.notes.map(n=>`<li><span>${n}</span></li>`).join('')}</ol></aside>
   </div>`;
 }
+/* The Road Traveled: shifts that are real. A road appears only with a before, an after, and a moment one of us said it out loud.
+   [icon, title, color, status (shifted|motion|deep), then[label,text], now[label,text], said[[quote,who,date]], next, note] */
+const ROAD = [
+  ['mountain','From leaving to <em>staying</em>','#E58BB0','shifted',
+    ['Jul 2025','Early on you said it plainly: “I want to run away.” Then, “I’m scared.” You said both out loud, and you stayed in the room.'],
+    ['May to Jun 2026','You named the old pattern exactly, then broke it. Sitting in a car with the old voice telling you that you weren’t good enough, you didn’t reach for the old fix. You walked away from it.'],
+    [['I’m always fleeing the scene before the autopsy.','you','May 2026'],['I’m done hiding.','you','Jun 2026']],
+    'Stay with the feeling as long as you now stay with the situation. Long enough to find out what it actually is.',''],
+  ['leaf','From taking the edge off to <em>breath, iron and earth</em>','#7FD6A2','shifted',
+    ['Autumn 2025','When the noise got loud, the pull was to take the edge off and make it quiet. Hustle did some of that work too.'],
+    ['Dec 2025 to Aug 2026','Breath, meditation and movement are what you reach for now. A work trip that usually ran on late nights out, you kept clear. In the middle of the car saga, a full breath session in the driver’s seat before deciding anything.'],
+    [['I can regulate my own central nervous system with my meditation and my breath work… I feel real good, man.','you','Dec 2025'],['You didn’t numb out. You stayed present. That’s growth.','notes','Feb 2026']],
+    'When it gets loud, body first, then decide. It’s already your reflex. Let it be the first one, every time.',''],
+  ['dumbbell','From locked up to <em>strong</em>','#E8732A','shifted',
+    ['Apr 2026','At the top of your career your whole spine seized. Nothing structural was wrong. Your body was holding what you hadn’t put down yet.'],
+    ['Sep 2026','In the gym daily, running on little sleep without the usual crash. Strength and tears arriving in the same weeks, and neither one cancelling the other.'],
+    [['Pain-free for the first time in a year.','notes','May 2026'],['A huge surge in stamina, strength, and emotional presence since the retreat.','notes','Sep 2026']],
+    'Watch where the new strength goes: into presence, or back into the grind.',''],
+  ['clock','From planning every minute to <em>leaving room</em>','#5FC0AE','motion',
+    ['Before Dec 2025','Trips spreadsheeted to the hour, everything paid in advance, and then “we got to go, we got to go.”'],
+    ['Dec 2025 and Aug 2026','“I didn’t pack the schedule like I usually do.” You built in downtime and asked what everyone likes to eat and do. In August a car took twelve hours of analysis, and then you chose experiences over the car.'],
+    [['It was never about the car.','you','Aug 2026']],
+    'Let the next big decision take less time than a Marvel movie.',
+    'Not a straight line, and it doesn’t need to be. Big decisions still switch the machine back on. What’s changed is that you catch it, and the choice at the end was yours.'],
+  ['crown','From earning it to <em>receiving it</em>','#D9A648','deep',
+    ['Apr 2026','“Pain tolerance has always been my sixth gear.” Endurance was the proof that you were doing a good job.'],
+    ['Jul 2026','You can hear the scoring machine now, even while it runs: “Did I earn it? Am I worthy of that?” Hearing it is new.'],
+    [['Things are really good.','you','May 2026'],['You’re not trapped. You just learned to hear the cage.','notes','Jul 2026']],
+    'When something good lands, one breath of “thank you” before the audit starts.',
+    'This one doesn’t travel in a line. It comes back a layer deeper each time, and each time you name it faster.']
+];
+const RST = {shifted:'Shifted', motion:'In motion', deep:'Deepening'};
+function road(){
+  const n = s => ROAD.filter(r=>r[3]===s).length;
+  return `<div class="road-wrap">
+    <div class="sess-head" style="grid-template-columns:1fr;margin-bottom:0"><div><p class="eyebrow" style="--c:#E58BB0">Where you’ve been, where you are</p><h2>The Road <em>Traveled</em></h2>
+      <p class="lede">Not what you learned. What changed. A road shows up here only once it’s real: a before, an after, and a moment one of us said it out loud.</p></div></div>
+    <div class="road-meter" aria-hidden="true">${ROAD.map((r,i)=>`<i class="${r[3]}" style="--m:${r[2]};--d:${i*140}ms"></i>`).join('')}</div>
+    <p class="road-legend">${ROAD.length} roads · <b>${n('shifted')} shifted</b>, the old way isn’t the default anymore · <b>${n('motion')} in motion</b>, moving, not steady yet · <b>${n('deep')} deepening</b>, back a layer down each time</p>
+    <div class="roads">${ROAD.map(([ic,h,c,st,th,nw,said,nx,note],i)=>`<article class="road" style="--h:${c};--d:${i*70}ms">
+      <div class="rh"><div class="ico">${I(ic,20)}</div><h4>${h}</h4><span class="rst ${st}">${RST[st]}</span></div>
+      <div class="legs">
+        <div class="leg then"><span class="dot"></span><small>Then · ${th[0]}</small><p>${gl(th[1])}</p></div>
+        <div class="leg now"><span class="dot"></span><small>Now · ${nw[0]}</small><p>${gl(nw[1])}</p></div>
+        <div class="leg next"><span class="dot"></span><small>Where it’s headed</small><p>${gl(nx)}</p></div>
+      </div>
+      ${note?`<p class="rnote">${note}</p>`:''}
+      <p class="said-l">Said out loud</p>
+      <div class="said">${said.map(([q,w,d])=>`<blockquote>“${q}”<cite>${WHO[w]} · ${d}</cite></blockquote>`).join('')}</div>
+    </article>`).join('')}</div>
+  </div>`;
+}
 function threads(){
   const stops = [
     ['Jul 2025','First session. Getting rooted.','#7FD6A2',0],
@@ -752,7 +848,7 @@ function threads(){
     ['Sep 4','Our latest session.','#D9A648',0],
     ['Next','Whenever you’re ready.','#8FB0F0',1]
   ];
-  return `<div class="wide">
+  return `<div class="wide">${road()}
     <div class="sess-head" style="grid-template-columns:1fr"><div><p class="eyebrow">Fifteen months, side by side</p><h2>Common <em>threads</em></h2>
       <p class="lede">What keeps coming back, sometimes in nearly the same words, a year apart. When something shows up three times, it’s worth paying attention to.</p></div></div>
     <div class="timeline" id="tl"><div class="tl-track"><div class="tl-fill"></div></div>
